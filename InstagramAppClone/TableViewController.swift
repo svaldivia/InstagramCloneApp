@@ -14,14 +14,15 @@ class TableViewController: UITableViewController {
     var usernames = [""]
     var userIds = [""]
     var isFollowing = ["": false]
+    
+    var refresher : UIRefreshControl!
+    
 
     @IBAction func logOut(sender: AnyObject) {
         PFUser.logOut()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func refresh() {
         let query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) in
@@ -33,7 +34,7 @@ class TableViewController: UITableViewController {
                 self.isFollowing.removeAll(keepCapacity: true)
                 
                 for object in users {
-                 
+                    
                     if let user = object as? PFUser {
                         
                         if user.objectId != PFUser.currentUser()?.objectId {
@@ -55,6 +56,7 @@ class TableViewController: UITableViewController {
                                 }
                                 if self.isFollowing.count == self.usernames.count {
                                     self.tableView.reloadData()
+                                    self.refresher.endRefreshing()
                                 }
                                 
                             })
@@ -65,14 +67,26 @@ class TableViewController: UITableViewController {
                 }
             }
             
-//            self.usernames.sortInPlace()
+            //            self.usernames.sortInPlace()
             
             print(self.usernames)
             print(self.userIds)
             
-            
-            
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Pull to Refresh
+        refresher = UIRefreshControl()
+        
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refresher)
+        // ---
+        
+        refresh()
     }
 
     override func didReceiveMemoryWarning() {
