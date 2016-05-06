@@ -142,16 +142,93 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="User List" id="1nG-Vz-jzS">
-                        <barButtonItem key="rightBarButtonItem" title="Log out" id="oTn-rZ-J7n">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="oTn-rZ-J7n">
                             <connections>
                                 <action selector="logOut:" destination="h97-Ib-rro" id="8hp-ac-9k5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="xjN-S7-YI4">
+                            <connections>
+                                <segue destination="RrT-ip-iBY" kind="show" id="Z4D-qx-Msb"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V9u-t9-sJZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="344"/>
+            <point key="canvasLocation" x="2385.5" y="343.5"/>
+        </scene>
+        <!--Post Image View Controller-->
+        <scene sceneID="9Vf-fY-w8d">
+            <objects>
+                <viewController id="RrT-ip-iBY" customClass="PostImageViewController" customModule="InstagramAppClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dlF-Tv-qcI"/>
+                        <viewControllerLayoutGuide type="bottom" id="6mx-BN-H8R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3hh-4u-pJj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="photo.png" translatesAutoresizingMaskIntoConstraints="NO" id="6uq-3D-ZLl">
+                                <rect key="frame" x="67" y="66" width="245" height="247"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="247" id="JlM-yL-7j1"/>
+                                    <constraint firstAttribute="width" constant="245" id="yDc-SZ-Bmm"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mey-hM-All">
+                                <rect key="frame" x="67" y="370" width="245" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-ap-7OX">
+                                <rect key="frame" x="134" y="332" width="107" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="GJU-qE-zmR"/>
+                                </constraints>
+                                <state key="normal" title="Choose Image"/>
+                                <connections>
+                                    <action selector="chooseImage:" destination="RrT-ip-iBY" eventType="touchUpInside" id="Fex-7l-NsT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5E-EQ-AcB">
+                                <rect key="frame" x="150" y="414" width="75" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="uWf-A9-0Fl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitImage:" destination="RrT-ip-iBY" eventType="touchUpInside" id="cch-s6-jDc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NTX-ap-7OX" firstAttribute="centerX" secondItem="3hh-4u-pJj" secondAttribute="centerX" id="4IA-wH-DB3"/>
+                            <constraint firstItem="Mey-hM-All" firstAttribute="top" secondItem="NTX-ap-7OX" secondAttribute="bottom" constant="8" id="AyQ-pf-qZs"/>
+                            <constraint firstItem="e5E-EQ-AcB" firstAttribute="top" secondItem="Mey-hM-All" secondAttribute="bottom" constant="14" id="IJd-FN-Yrz"/>
+                            <constraint firstItem="6uq-3D-ZLl" firstAttribute="centerX" secondItem="3hh-4u-pJj" secondAttribute="centerX" id="IoZ-ja-RuQ"/>
+                            <constraint firstItem="NTX-ap-7OX" firstAttribute="top" secondItem="6uq-3D-ZLl" secondAttribute="bottom" constant="19" id="RBa-p6-urz"/>
+                            <constraint firstItem="Mey-hM-All" firstAttribute="leading" secondItem="3hh-4u-pJj" secondAttribute="leadingMargin" constant="47" id="U4r-Eb-719"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Mey-hM-All" secondAttribute="trailing" constant="43" id="Z25-J9-meJ"/>
+                            <constraint firstItem="e5E-EQ-AcB" firstAttribute="centerX" secondItem="3hh-4u-pJj" secondAttribute="centerX" id="n1f-19-ZJK"/>
+                            <constraint firstItem="6uq-3D-ZLl" firstAttribute="top" secondItem="dlF-Tv-qcI" secondAttribute="bottom" constant="46" id="qi9-nQ-p7Q"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="comment" destination="Mey-hM-All" id="Lv6-fU-a9e"/>
+                        <outlet property="imageToPost" destination="6uq-3D-ZLl" id="6ie-YP-rAS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XcH-gQ-yc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2806.5" y="343.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="c3U-Xw-pfk">
@@ -170,4 +247,7 @@
             <point key="canvasLocation" x="1968" y="344"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="photo.png" width="512" height="512"/>
+    </resources>
 </document>
