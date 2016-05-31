@@ -29,12 +29,31 @@ class PostImageViewController: UIViewController, UINavigationControllerDelegate,
         
         let image = UIImagePickerController()
         image.delegate = self
-        
-        //CHALLENGE: Choose between the photolibrary or the camera
-        image.sourceType = .PhotoLibrary
         image.allowsEditing = false
         
-        self.presentViewController(image, animated: true, completion: nil)
+
+        let actionSheet = UIAlertController(title: nil, message: "Choose Image", preferredStyle: .ActionSheet)
+        
+        let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .Default) { (action) in
+            image.sourceType = .PhotoLibrary
+            self.presentViewController(image, animated: true, completion: nil)
+        }
+        
+        actionSheet.addAction(photoLibraryAction);
+        
+        let cameraAction = UIAlertAction(title: "Camera", style: .Default) { (action) in
+            image.sourceType = .Camera
+            self.presentViewController(image, animated: true, completion: nil)
+        }
+        
+        actionSheet.addAction(cameraAction);
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        
+        actionSheet.addAction(cancelAction);
+        
+        self.presentViewController(actionSheet, animated: true, completion: nil)
+    
     }
     
     

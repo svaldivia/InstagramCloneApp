@@ -16,6 +16,17 @@ class FeedTableViewController: UITableViewController {
     var imageFiles = [PFFile]()
     var users = [String : String]()
     
+    @IBAction func logOut(sender: AnyObject) {
+        PFUser.logOut();
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        
+        let loginView = sb.instantiateViewControllerWithIdentifier("login") as! ViewController
+        loginView.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        self.presentViewController(loginView, animated: true, completion: nil)
+        
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -1,4 +1,11 @@
-# InstagramCloneApp
-Instagram Clone iOS App using Swift and Parse
+# Instagram Clone App
+Instagram Clone app based on the Udemy iOS 9 Development course with some additional improvements.
 
-*Work in progress
+##My Improvements
+ - Included cocoa pods
+ - Improved navigation using tab and navigation controllers
+ - Added camera image upload
+ - Added log out functionality
+
+##To Do
+ - Create custom view for camera
